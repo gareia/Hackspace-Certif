@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -12,16 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ToDoAPI.Application.DTO\ToDoAPI.Application.DTO.csproj" />
-    <ProjectReference Include="..\ToDoAPI.Application.Service\ToDoAPI.Application.Service.csproj" />
-    <ProjectReference Include="..\ToDoAPI.Infrastructure.Connections\ToDoAPI.Infrastructure.Connections.csproj" />
-    <ProjectReference Include="..\ToDoAPI.Infrastructure.UnitOfWork\ToDoAPI.Infrastructure.UnitOfWork.csproj" />
-  </ItemGroup>
-
 
 </Project>
