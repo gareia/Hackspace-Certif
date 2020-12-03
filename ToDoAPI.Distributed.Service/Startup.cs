@@ -43,10 +43,7 @@ namespace ToDoAPI.Distributed.Service
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IToDoItemRepository, ToDoItemRepository>();
             services.AddScoped<IToDoItemService, ToDoItemService>();
-            services.AddAutoMapper(configuration =>
-            {
-                configuration.CreateMap<ToDoItem, ToDoItemDTO>();
-            }, typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
           
         }
 
