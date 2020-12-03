@@ -9,5 +9,6 @@ namespace ToDoAPI.Infrastructure.Repository.Interfaces
     public interface IToDoItemRepository
     {
         Task<IEnumerable<ToDoItem>> ListAsync();
+        Task AddAsync(ToDoItem item);
     }
 }

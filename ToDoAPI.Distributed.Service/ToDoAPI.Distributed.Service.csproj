@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\ToDoAPI.Application.DTO\ToDoAPI.Application.DTO.csproj" />
     <ProjectReference Include="..\ToDoAPI.Application.Service\ToDoAPI.Application.Service.csproj" />
+    <ProjectReference Include="..\ToDoAPI.Crosscuting.Extensions\ToDoAPI.Crosscuting.Extensions.csproj" />
+    <ProjectReference Include="..\ToDoAPI.Domain.Entities\ToDoAPI.Domain.Entities.csproj" />
     <ProjectReference Include="..\ToDoAPI.Infrastructure.Connections\ToDoAPI.Infrastructure.Connections.csproj" />
+    <ProjectReference Include="..\ToDoAPI.Infrastructure.Repository\ToDoAPI.Infrastructure.Repository.csproj" />
     <ProjectReference Include="..\ToDoAPI.Infrastructure.UnitOfWork\ToDoAPI.Infrastructure.UnitOfWork.csproj" />
   </ItemGroup>
 

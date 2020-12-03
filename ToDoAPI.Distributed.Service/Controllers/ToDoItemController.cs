@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using ToDoAPI.Application.DTO;
 using ToDoAPI.Application.Service.Interfaces;
 using ToDoAPI.Domain.Entities;
+using ToDoAPI.Crosscuting.Extensions;
+
 
 namespace ToDoAPI.Distributed.Service.Controllers
 {
@@ -33,17 +35,32 @@ namespace ToDoAPI.Distributed.Service.Controllers
             return Ok(resources);
         }
 
+        // POST: api/ToDoItem
+        [HttpPost]
+        public async Task<ActionResult<ToDoItemDTO>> PostAsync([FromBody] ToDoItemCreationDTO resource)//
+        {
+            //Add modelstate EXTENSION Y AÑADIR AQUI ABAJITO
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages()); 
+
+            var item = _mapper.Map<ToDoItemCreationDTO, ToDoItem>(resource);
+            var result = await _toDoItemService.AddAsync(item);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var itemResource = _mapper.Map<ToDoItem,ToDoItemDTO>(result.Resource);
+            return Ok(itemResource);
+            
+
+        }
+
         // GET: api/ToDoItem/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
-        }
-
-        // POST: api/ToDoItem
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
         }
 
         // PUT: api/ToDoItem/5

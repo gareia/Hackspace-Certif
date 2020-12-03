@@ -16,6 +16,11 @@ namespace ToDoAPI.Infrastructure.Repository.Classes
 
         }
 
+        public async Task AddAsync(ToDoItem item)
+        {
+             await _context.ToDoItems.AddAsync(item);
+        }
+
         public async Task<IEnumerable<ToDoItem>> ListAsync()
         {
             return await _context.ToDoItems.ToListAsync();

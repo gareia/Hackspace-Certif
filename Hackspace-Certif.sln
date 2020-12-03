@@ -11,19 +11,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Domain", "04.Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Infrastructure", "05.Infrastructure", "{3E6868CE-8B94-486C-9CFF-8BDD13BF0B77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Distributed.Service", "ToDoAPI.Distributed.Service\ToDoAPI.Distributed.Service.csproj", "{4EDB7C61-89E1-4B17-B84F-06E886424E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Distributed.Service", "ToDoAPI.Distributed.Service\ToDoAPI.Distributed.Service.csproj", "{4EDB7C61-89E1-4B17-B84F-06E886424E0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C09102BF-7463-4717-ACAC-5A90E494FFF7} = {C09102BF-7463-4717-ACAC-5A90E494FFF7}
+		{613C37C4-DF23-4EEC-B1FC-340D90034082} = {613C37C4-DF23-4EEC-B1FC-340D90034082}
+		{094FF2CD-8156-4865-9469-A634B054E64D} = {094FF2CD-8156-4865-9469-A634B054E64D}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Domain.Entities", "ToDoAPI.Domain.Entities\ToDoAPI.Domain.Entities.csproj", "{094FF2CD-8156-4865-9469-A634B054E64D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Domain.Entities", "ToDoAPI.Domain.Entities\ToDoAPI.Domain.Entities.csproj", "{094FF2CD-8156-4865-9469-A634B054E64D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Infrastructure.UnitOfWork", "ToDoAPI.Infrastructure.UnitOfWork\ToDoAPI.Infrastructure.UnitOfWork.csproj", "{C3E03A43-4FA4-4DFB-A4F3-9C0E366CAB67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Infrastructure.UnitOfWork", "ToDoAPI.Infrastructure.UnitOfWork\ToDoAPI.Infrastructure.UnitOfWork.csproj", "{C3E03A43-4FA4-4DFB-A4F3-9C0E366CAB67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Infrastructure.Repository", "ToDoAPI.Infrastructure.Repository\ToDoAPI.Infrastructure.Repository.csproj", "{C09102BF-7463-4717-ACAC-5A90E494FFF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Infrastructure.Repository", "ToDoAPI.Infrastructure.Repository\ToDoAPI.Infrastructure.Repository.csproj", "{C09102BF-7463-4717-ACAC-5A90E494FFF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Infrastructure.Connections", "ToDoAPI.Infrastructure.Connections\ToDoAPI.Infrastructure.Connections.csproj", "{23CFC1BD-3B21-44FB-B3A2-59F9F5B27721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Infrastructure.Connections", "ToDoAPI.Infrastructure.Connections\ToDoAPI.Infrastructure.Connections.csproj", "{23CFC1BD-3B21-44FB-B3A2-59F9F5B27721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Application.DTO", "ToDoAPI.Application.DTO\ToDoAPI.Application.DTO.csproj", "{49397CC6-4682-4884-92CA-74ACDDFC1BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Application.DTO", "ToDoAPI.Application.DTO\ToDoAPI.Application.DTO.csproj", "{49397CC6-4682-4884-92CA-74ACDDFC1BAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoAPI.Application.Service", "ToDoAPI.Application.Service\ToDoAPI.Application.Service.csproj", "{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Application.Service", "ToDoAPI.Application.Service\ToDoAPI.Application.Service.csproj", "{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06.Crosscuting", "06.Crosscuting", "{C149CC8E-5010-410B-8205-636B89161660}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI.Crosscuting.Extensions", "ToDoAPI.Crosscuting.Extensions\ToDoAPI.Crosscuting.Extensions.csproj", "{613C37C4-DF23-4EEC-B1FC-340D90034082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +68,10 @@ Global
 		{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613C37C4-DF23-4EEC-B1FC-340D90034082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613C37C4-DF23-4EEC-B1FC-340D90034082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613C37C4-DF23-4EEC-B1FC-340D90034082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613C37C4-DF23-4EEC-B1FC-340D90034082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +84,7 @@ Global
 		{23CFC1BD-3B21-44FB-B3A2-59F9F5B27721} = {3E6868CE-8B94-486C-9CFF-8BDD13BF0B77}
 		{49397CC6-4682-4884-92CA-74ACDDFC1BAD} = {7FF589FA-1669-4ACE-B33F-B7D2B612794F}
 		{BBC88189-1B0F-4573-B1FD-DE4B3D4CA450} = {7FF589FA-1669-4ACE-B33F-B7D2B612794F}
+		{613C37C4-DF23-4EEC-B1FC-340D90034082} = {C149CC8E-5010-410B-8205-636B89161660}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBD3C7B5-E562-4CB2-B35D-649B740E1C58}

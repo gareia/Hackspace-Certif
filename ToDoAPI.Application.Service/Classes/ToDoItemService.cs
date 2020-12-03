@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoAPI.Application.Service.Communication;
 using ToDoAPI.Application.Service.Interfaces;
 using ToDoAPI.Domain.Entities;
 using ToDoAPI.Infrastructure.Repository.Interfaces;
@@ -20,9 +21,26 @@ namespace ToDoAPI.Application.Service.Classes
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<ToDoItemResponse> AddAsync(ToDoItem item)
+        {
+            try
+            {
+                await _toDoItemRepository.AddAsync(item);
+                await _unitOfWork.CompleteAsync();
+                return new ToDoItemResponse(item);
+            }
+            catch(Exception e)
+            {
+                //warn:
+                return new ToDoItemResponse($"An error ocurred while adding todoitem {e.Message}");
+            }
+        }
+
         public async Task<IEnumerable<ToDoItem>> ListAsync()
         {
             return await _toDoItemRepository.ListAsync();
         }
+
+
     }
 }
