@@ -10,5 +10,6 @@ namespace ToDoAPI.Infrastructure.Repository.Interfaces
     {
         Task<IEnumerable<ToDoItem>> ListAsync();
         Task AddAsync(ToDoItem item);
+        Task<ToDoItem> FindByIdAsync(long id);
     }
 }

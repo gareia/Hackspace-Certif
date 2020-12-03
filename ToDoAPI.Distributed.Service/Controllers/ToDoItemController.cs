@@ -37,7 +37,7 @@ namespace ToDoAPI.Distributed.Service.Controllers
 
         // POST: api/ToDoItem
         [HttpPost]
-        public async Task<ActionResult<ToDoItemDTO>> PostAsync([FromBody] ToDoItemCreationDTO resource)//
+        public async Task<ActionResult<ToDoItemDTO>> Post([FromBody] ToDoItemCreationDTO resource)//
         {
             //Add modelstate EXTENSION Y AÑADIR AQUI ABAJITO
 
@@ -57,10 +57,17 @@ namespace ToDoAPI.Distributed.Service.Controllers
         }
 
         // GET: api/ToDoItem/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ToDoItemDTO>> GetById(long id)
         {
-            return "value";
+            var result = await _toDoItemService.FindByIdAsync(id);
+
+            if (!result.Success || result.Resource == null)
+                return NotFound(result.Message);
+
+            var itemResource = _mapper.Map<ToDoItem, ToDoItemDTO>(result.Resource);
+
+            return Ok(itemResource);
         }
 
         // PUT: api/ToDoItem/5

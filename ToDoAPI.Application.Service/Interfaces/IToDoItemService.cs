@@ -11,5 +11,6 @@ namespace ToDoAPI.Application.Service.Interfaces
     {
         Task<IEnumerable<ToDoItem>> ListAsync();
         Task<ToDoItemResponse> AddAsync(ToDoItem item);
+        Task<ToDoItemResponse> FindByIdAsync(long id);
     }
 }

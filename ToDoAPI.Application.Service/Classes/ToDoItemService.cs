@@ -32,7 +32,20 @@ namespace ToDoAPI.Application.Service.Classes
             catch(Exception e)
             {
                 //warn:
-                return new ToDoItemResponse($"An error ocurred while adding todoitem {e.Message}");
+                return new ToDoItemResponse($"An exception ocurred while adding todoitem ===> {e.Message}");
+            }
+        }
+
+        public async Task<ToDoItemResponse> FindByIdAsync(long id)
+        {
+            try
+            {
+                var item = await _toDoItemRepository.FindByIdAsync(id);
+                return new ToDoItemResponse(item);
+            }
+            catch(Exception e)
+            {
+                return new ToDoItemResponse($"An exception ocurred while finding todoitem with id: {id} ===> {e.Message}");
             }
         }
 
