@@ -70,16 +70,26 @@ namespace ToDoAPI.Distributed.Service.Controllers
             return Ok(itemResource);
         }
 
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ToDoItemDTO>> Delete(long id)
+        {
+            var result = await _toDoItemService.RemoveAsync(id);
+
+            if (!result.Success)
+                return StatusCode(result.StatusCode, result.Message);
+
+            var itemResource = _mapper.Map<ToDoItem, ToDoItemDTO>(result.Resource);
+            return Ok(itemResource);
+        }
+
         // PUT: api/ToDoItem/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

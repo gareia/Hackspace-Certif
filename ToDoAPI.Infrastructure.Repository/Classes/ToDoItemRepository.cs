@@ -21,6 +21,11 @@ namespace ToDoAPI.Infrastructure.Repository.Classes
              await _context.ToDoItems.AddAsync(item);
         }
 
+        public void Remove(ToDoItem item)
+        {
+            _context.Remove(item);
+        }
+
         public async Task<ToDoItem> FindByIdAsync(long id)
         {
             return await _context.ToDoItems.FindAsync(id);

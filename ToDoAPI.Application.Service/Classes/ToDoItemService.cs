@@ -54,6 +54,24 @@ namespace ToDoAPI.Application.Service.Classes
             return await _toDoItemRepository.ListAsync();
         }
 
+        public async Task<ToDoItemResponse> RemoveAsync(long id)
+        {
+            var item = await _toDoItemRepository.FindByIdAsync(id);
 
+            if (item == null)
+                return new ToDoItemResponse($"Item with id: {id} was not found", 404);
+
+            try
+            {
+                _toDoItemRepository.Remove(item);
+                await _unitOfWork.CompleteAsync();
+                return new ToDoItemResponse(item);
+            }
+            catch(Exception e)
+            {
+                return new ToDoItemResponse($"An exception ocurred while removing todoitem with id: {id} ---> {e.Message}", 500);
+            }
+
+        }
     }
 }
