@@ -15,5 +15,9 @@ namespace ToDoAPI.Application.Service.Communication
         {
 
         }
+        public ToDoItemResponse(string message, int statusCode): base(message, statusCode)
+        {
+
+        }
     }
 }

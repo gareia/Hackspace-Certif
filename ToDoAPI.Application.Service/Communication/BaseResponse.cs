@@ -9,6 +9,7 @@ namespace ToDoAPI.Application.Service.Communication
         public bool Success { get; set; }
         public string Message { get; set; }
         public T Resource { get; set; }
+        public int StatusCode { get; set; }
 
         public BaseResponse(T resource)
         {
@@ -20,6 +21,13 @@ namespace ToDoAPI.Application.Service.Communication
         {
             Success = false;
             Message = message;
+
+        }
+        public BaseResponse(string message, int statusCode)
+        {
+            Success = false;
+            Message = message;
+            StatusCode = statusCode;
         }
     }
 }
