@@ -62,8 +62,8 @@ namespace ToDoAPI.Distributed.Service.Controllers
         {
             var result = await _toDoItemService.FindByIdAsync(id);
 
-            if (!result.Success || result.Resource == null)
-                return NotFound(result.Message);
+            if (!result.Success)
+                return StatusCode(result.StatusCode, result.Message);
 
             var itemResource = _mapper.Map<ToDoItem, ToDoItemDTO>(result.Resource);
 

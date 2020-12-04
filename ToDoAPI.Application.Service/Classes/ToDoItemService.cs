@@ -41,11 +41,15 @@ namespace ToDoAPI.Application.Service.Classes
             try
             {
                 var item = await _toDoItemRepository.FindByIdAsync(id);
+
+                if (item == null)
+                    return new ToDoItemResponse($"Item with id: {id} was not found", 404);
+
                 return new ToDoItemResponse(item);
             }
             catch(Exception e)
             {
-                return new ToDoItemResponse($"An exception ocurred while finding todoitem with id: {id} ===> {e.Message}");
+                return new ToDoItemResponse($"An exception ocurred while finding todoitem with id: {id} ===> {e.Message}", 500);
             }
         }
 
