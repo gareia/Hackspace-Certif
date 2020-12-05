@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using ToDoAPI.Application.DTO;
 using ToDoAPI.Application.Service.Interfaces;
-using ToDoAPI.Domain.Entities;
 using ToDoAPI.Crosscuting.Extensions;
-
+using ToDoAPI.Domain.Entities;
 
 namespace ToDoAPI.Distributed.Service.Controllers
 {
@@ -37,10 +33,8 @@ namespace ToDoAPI.Distributed.Service.Controllers
 
         // POST: api/ToDoItem
         [HttpPost]
-        public async Task<ActionResult<ToDoItemDTO>> Post([FromBody] ToDoItemCreationDTO resource)//
+        public async Task<ActionResult<ToDoItemDTO>> Post([FromBody] ToDoItemCreationDTO resource)
         {
-            //Add modelstate EXTENSION Y AÑADIR AQUI ABAJITO
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages()); 
 
@@ -52,8 +46,6 @@ namespace ToDoAPI.Distributed.Service.Controllers
 
             var itemResource = _mapper.Map<ToDoItem,ToDoItemDTO>(result.Resource);
             return Ok(itemResource);
-            
-
         }
 
         // GET: api/ToDoItem/5
@@ -83,13 +75,45 @@ namespace ToDoAPI.Distributed.Service.Controllers
             return Ok(itemResource);
         }
 
-        // PUT: api/ToDoItem/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Patch(long id, [FromBody] ToDoItemModificationDTO newItem)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
 
+            var result = await _toDoItemService.UpdateAsync(id, newItem);
+
+            if (!result.Success)
+                return StatusCode(result.StatusCode, result.Message);
+
+            var itemResource = _mapper.Map<ToDoItem, ToDoItemDTO>(result.Resource);
+            return Ok(itemResource);
         }
-
         
+        /*[HttpPatch("{id}")]
+        public async Task<ActionResult> Patch(long id, [FromBody] JsonPatchDocument<ToDoItem> patchDocument)
+        {
+            if (patchDocument == null)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var result = await _toDoItemService.FindByIdAsync(id);
+
+            if (!result.Success)
+                return StatusCode(result.StatusCode, result.Message);
+
+            var item = result.Resource;
+            //var itemModResource = _mapper.Map<ToDoItem, ToDoItemModificationDTO>(result.Resource);
+            //patchDocument.ApplyTo(itemModResource, ModelState);
+            patchDocument.ApplyTo(item, ModelState);
+
+            var isValid = TryValidateModel(item);
+
+            if (!isValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            await _uof.CompleteAsync();
+
+            return Ok(item); 
+        }*/
     }
 }

@@ -14,6 +14,8 @@ namespace ToDoAPI.Distributed.Service.AppData
         {
             CreateMap<ToDoItem, ToDoItemDTO>();
             CreateMap<ToDoItemCreationDTO, ToDoItem>();
+            CreateMap<ToDoItem, ToDoItemModificationDTO>();
+            CreateMap<ToDoItemModificationDTO, ToDoItemDTO>();
         }
     }
 }
