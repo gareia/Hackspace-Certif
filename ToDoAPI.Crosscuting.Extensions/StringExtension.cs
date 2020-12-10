@@ -15,6 +15,8 @@ namespace ToDoAPI.Crosscuting.Extensions
             string pattern = "[/:-]";
             string[] substrs = Regex.Split(str, pattern);
 
+            // !
+
             int DD = int.Parse(substrs[0]);
             int MO = int.Parse(substrs[1]);
             int AAAA = int.Parse(substrs[2]);
