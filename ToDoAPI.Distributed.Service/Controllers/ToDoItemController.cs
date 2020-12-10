@@ -25,7 +25,7 @@ namespace ToDoAPI.Distributed.Service.Controllers
         // GET: api/ToDoItem
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ToDoItemDTO>>> GetAll()
-        {
+        {   
             var items = await _toDoItemService.ListAsync();
             var resources = _mapper.Map<IEnumerable<ToDoItem>, IEnumerable<ToDoItemDTO>>(items);
             return Ok(resources);
@@ -81,7 +81,8 @@ namespace ToDoAPI.Distributed.Service.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var result = await _toDoItemService.UpdateAsync(id, newItem);
+            var newest = _mapper.Map<ToDoItemModificationDTO, ToDoItem>(newItem);
+            var result = await _toDoItemService.UpdateAsync(id, newest);
 
             if (!result.Success)
                 return StatusCode(result.StatusCode, result.Message);
@@ -90,30 +91,5 @@ namespace ToDoAPI.Distributed.Service.Controllers
             return Ok(itemResource);
         }
         
-        /*[HttpPatch("{id}")]
-        public async Task<ActionResult> Patch(long id, [FromBody] JsonPatchDocument<ToDoItem> patchDocument)
-        {
-            if (patchDocument == null)
-                return BadRequest(ModelState.GetErrorMessages());
-
-            var result = await _toDoItemService.FindByIdAsync(id);
-
-            if (!result.Success)
-                return StatusCode(result.StatusCode, result.Message);
-
-            var item = result.Resource;
-            //var itemModResource = _mapper.Map<ToDoItem, ToDoItemModificationDTO>(result.Resource);
-            //patchDocument.ApplyTo(itemModResource, ModelState);
-            patchDocument.ApplyTo(item, ModelState);
-
-            var isValid = TryValidateModel(item);
-
-            if (!isValid)
-                return BadRequest(ModelState.GetErrorMessages());
-
-            await _uof.CompleteAsync();
-
-            return Ok(item); 
-        }*/
     }
 }
