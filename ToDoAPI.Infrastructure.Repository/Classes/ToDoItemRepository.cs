@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToDoAPI.Application.DTO;
 using ToDoAPI.Domain.Entities;
 using ToDoAPI.Infrastructure.Connections.Contexts;
 using ToDoAPI.Infrastructure.Repository.Interfaces;
@@ -36,12 +35,14 @@ namespace ToDoAPI.Infrastructure.Repository.Classes
 
         }
 
-        public ToDoItem Update(ToDoItem item, ToDoItemModificationDTO newItem)
+        public ToDoItem Update(ToDoItem item, ToDoItem newItem)
         {
             if (newItem.Name != null)
                 item.Name = newItem.Name;
             if (newItem.Completed)
                 item.Completed = newItem.Completed;
+            if (newItem.LimitDate != null)
+                item.LimitDate = newItem.LimitDate;
 
             _context.ToDoItems.Update(item);
             return item;

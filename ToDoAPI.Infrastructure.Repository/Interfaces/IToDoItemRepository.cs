@@ -13,7 +13,7 @@ namespace ToDoAPI.Infrastructure.Repository.Interfaces
         Task AddAsync(ToDoItem item);
         Task<ToDoItem> FindByIdAsync(long id);
         void Remove(ToDoItem item);
-        ToDoItem Update(ToDoItem item, ToDoItemModificationDTO newItem);
+        ToDoItem Update(ToDoItem item, ToDoItem newItem);
 
     }
 }

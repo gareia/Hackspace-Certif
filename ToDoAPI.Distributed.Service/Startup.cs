@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using ToDoAPI.Application.Service.Classes;
 using ToDoAPI.Application.Service.Interfaces;
 using ToDoAPI.Infrastructure.Connections.Contexts;
@@ -12,8 +13,6 @@ using ToDoAPI.Infrastructure.Repository.Classes;
 using ToDoAPI.Infrastructure.Repository.Interfaces;
 using ToDoAPI.Infrastructure.UnitOfWork.Classes;
 using ToDoAPI.Infrastructure.UnitOfWork.Interfaces;
-using Microsoft.OpenApi.Models;
-using System.ComponentModel;
 
 namespace ToDoAPI.Distributed.Service
 {
