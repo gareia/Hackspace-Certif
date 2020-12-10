@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ToDoAPI.Application.DTO
 {
@@ -11,7 +8,9 @@ namespace ToDoAPI.Application.DTO
         public long Id { get; set; } //int
         [Required]
         public string Name { get; set; }
-        public bool Completed { get; set; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public bool Completed { get; set; }
+        public string CreatedAt { get; set; }
+        public string LimitDate { get; set; }
+
     }
 }

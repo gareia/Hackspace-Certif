@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ToDoAPI.Application.DTO
 {
@@ -9,5 +6,7 @@ namespace ToDoAPI.Application.DTO
     {
         [Required]
         public string Name { get; set; }
+        [MaxLength(19)]
+        public string LimitDate { get; set; }
     }
 }
