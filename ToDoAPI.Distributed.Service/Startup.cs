@@ -31,8 +31,10 @@ namespace ToDoAPI.Distributed.Service
             services.AddControllers();
             //services.AddControllersWithViews().AddNewtonsoftJson(); //
 
+            //*************
             services.AddDbContext<AppDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
-            
+            //*************
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IToDoItemRepository, ToDoItemRepository>();
             services.AddScoped<IToDoItemService, ToDoItemService>();
