@@ -31,7 +31,7 @@ namespace ToDoAPI.Application.Service.Classes
                     return new ToDoItemResponse($"LimitDate should be greater than current datetime");
 
                 await _toDoItemRepository.AddAsync(item);
-                await _unitOfWork.CompleteAsync();
+                //await _unitOfWork.CompleteAsync();
                 _logger.LogInformation("Item added successfully");
                 return new ToDoItemResponse(item);
             }
@@ -62,7 +62,7 @@ namespace ToDoAPI.Application.Service.Classes
 
         public async Task<IEnumerable<ToDoItem>> ListAsync()
         {
-            _logger.LogInformation("Items list showed successfully");
+            _logger.LogInformation("Calling items list");
             return await _toDoItemRepository.ListAsync();
         }
 
@@ -75,8 +75,8 @@ namespace ToDoAPI.Application.Service.Classes
 
             try
             {
-                _toDoItemRepository.Remove(item);
-                await _unitOfWork.CompleteAsync();
+                _toDoItemRepository.Remove(id);
+                //await _unitOfWork.CompleteAsync();
                 _logger.LogInformation("Item removed successfully");
                 return new ToDoItemResponse(item);
             }
@@ -103,7 +103,7 @@ namespace ToDoAPI.Application.Service.Classes
             try
             {
                 ToDoItem updatedItem = _toDoItemRepository.Update(item, newItem);
-                await _unitOfWork.CompleteAsync();
+                //await _unitOfWork.CompleteAsync();
                 _logger.LogInformation("Item updated successfully");
                 return new ToDoItemResponse(updatedItem);
             }

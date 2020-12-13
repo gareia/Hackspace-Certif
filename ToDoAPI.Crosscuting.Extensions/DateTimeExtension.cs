@@ -13,7 +13,7 @@ namespace ToDoAPI.Crosscuting.Extensions
             if ((DD == 1) & (MO == 1) && (AAAA == 1))
                 return "null";
 
-            return $"{DD}/{MO}/{AAAA}-{dt.Hour}:{dt.Minute}";
+            return $"{DD}-{MO}-{AAAA} {dt.Hour}:{dt.Minute}";
 
         }
     }

@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System;
 using System.Text.RegularExpressions;
 
 namespace ToDoAPI.Crosscuting.Extensions
@@ -12,7 +7,7 @@ namespace ToDoAPI.Crosscuting.Extensions
     {
         public static DateTime ToDateTime(this string str)
         {
-            string pattern = "[/:-]";
+            string pattern = "[ /:-]";
             string[] substrs = Regex.Split(str, pattern);
 
             // !

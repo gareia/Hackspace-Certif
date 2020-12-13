@@ -22,10 +22,11 @@ namespace ToDoAPI.Distributed.Service.Controllers
             _mapper = mapper;
         }
 
+        
         // GET: api/ToDoItem
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ToDoItemDTO>>> GetAll()
-        {   
+        {
             var items = await _toDoItemService.ListAsync();
             var resources = _mapper.Map<IEnumerable<ToDoItem>, IEnumerable<ToDoItemDTO>>(items);
             return Ok(resources);
@@ -75,6 +76,7 @@ namespace ToDoAPI.Distributed.Service.Controllers
             return Ok(itemResource);
         }
 
+        //PATCH api/ApiWithActions/5
         [HttpPatch("{id}")]
         public async Task<ActionResult> Patch(long id, [FromBody] ToDoItemModificationDTO newItem)
         {
@@ -90,6 +92,6 @@ namespace ToDoAPI.Distributed.Service.Controllers
             var itemResource = _mapper.Map<ToDoItem, ToDoItemDTO>(result.Resource);
             return Ok(itemResource);
         }
-        
+
     }
 }
